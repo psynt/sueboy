@@ -24,12 +24,6 @@
 * Fight - Get into fight, Inc Anger
 
 ### Fight Actions
-<<<<<<< HEAD
-Punch - Low Cost, Consistent Dmg
-Haymaker - More Cost, Variable Dmg
-Low Blow - High Cost, High Dmg
-Item - One Shot 
-=======
 * Punch - Low Cost, Consistent Dmg
 * Hay-maker - More Cost, Variable Dmg
 * Low Blow - High Cost, High Dmg
@@ -54,4 +48,3 @@ Item - One Shot
 ##### Guile
 * Guile stat influences accuracy of attacks
 * Guile stat influences dodgeability of enemy attacks
->>>>>>> 8958350... used bullet points
