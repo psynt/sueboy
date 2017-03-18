@@ -4,84 +4,91 @@ import com.badlogic.ashley.core.*;
 import com.badlogic.ashley.utils.ImmutableArray;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.*;
+import com.badlogic.gdx.scenes.scene2d.actions.EventAction;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.Scaling;
+import com.badlogic.gdx.utils.viewport.ScalingViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 
 import java.util.Map;
 
 public class Main extends ApplicationAdapter {
-	SpriteBatch batch;
-	Texture img;
-	Engine eng;
+	private SpriteBatch batch;
+	private Texture img;
+	private BitmapFont font;
+	private boolean clicked;
+    private Sprite sprite;
+    private Group gr;
+	private Actor act;
+	private String text = "Hello";
 
-
-
-	public class PositionComponent implements Component {
-		public float x = 0.0f;
-		public float y = 0.0f;
-	}
-
-	public class VelocityComponent implements Component {
-		public float x = 0.0f;
-		public float y = 0.0f;
-	}
-
-	public class MovementSystem extends EntitySystem {
-		private ImmutableArray<Entity> entities;
-
-		private ComponentMapper<PositionComponent> pm = ComponentMapper.getFor(PositionComponent.class);
-		private ComponentMapper<VelocityComponent> vm = ComponentMapper.getFor(VelocityComponent.class);
-
-		public MovementSystem() {}
-
-		public void addedToEngine(Engine engine) {
-			entities = engine.getEntitiesFor(Family.all(PositionComponent.class, VelocityComponent.class).get());
-		}
-
-		public void update(float deltaTime) {
-			for (int i = 0; i < entities.size(); ++i) {
-				Entity entity = entities.get(i);
-				PositionComponent position = pm.get(entity);
-				VelocityComponent velocity = vm.get(entity);
-
-				position.x += velocity.x * deltaTime;
-				position.y += velocity.y * deltaTime;
-			}
-		}
-	}
 	@Override
 	public void create () {
+		gr = new Group();
 		batch = new SpriteBatch();
-//		img = new Texture("badlogic.jpg");
-		Entity ent = new Entity();
+        img = new Texture("jet.png");
+        sprite = new Sprite(img);
+        act = new Actor(){
+			@Override
+			public void draw(Batch batch, float parentAlpha) {
+				new Sprite(new Texture("jet.png")).draw(batch);
+			}
+		};
+        act.addListener(new ClickListener(){
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				System.out.println("aaaaaa!!! ouch!");
+				text = "hit";
+			}
+		});
 
-		ent.add(new VelocityComponent());
-		ent.add(new PositionComponent());
-		eng = new Engine();
-		eng.addEntity(ent);
-		eng.addSystem(new MovementSystem());
+		font = new BitmapFont();
+		font.setColor(Color.BLACK);
+
+	}
+
+	@Override
+	public void dispose () {
+		batch.dispose();
+//		img.dispose();
 	}
 
 	@Override
 	public void render () {
 
-//		Gdx.gl.glClearColor(1, 0, 0, 1);
-//		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-//		batch.begin();
+		Gdx.gl.glClearColor(1, 0, 1, 1);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		batch.begin();
 //		batch.draw(img, 0, 0);
-//		batch.end();
+
+		//String text = clicked?"Hello world":"Goodbye Universe";
+//        font.draw(batch, text, 200, 200);
+//        act.draw(batch,1);
+//
+//		if(Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
+//			clicked = true;
+//		}
+//
+//		if(Gdx.input.isButtonPressed(Input.Buttons.RIGHT)) {
+//			clicked = false;
+//		}
+
+
+		new Stuff().draw();
+
+		batch.end();
 
 
 
-		eng.update(0);
 	}
-	
-	@Override
-	public void dispose () {
-//		batch.dispose();
-//		img.dispose();
-	}
-
 
 }

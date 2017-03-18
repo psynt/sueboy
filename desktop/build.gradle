@@ -1,7 +1,8 @@
 apply plugin: "java"
 
 sourceCompatibility = 1.8
-sourceSets.main.java.srcDirs = [ "src/" ]
+sourceSets.main.groovy.srcDirs = [ "src/" ]
+sourceSets.main.java.srcDirs = [ ]
 
 project.ext.mainClassName = "com.sueboy.desktop.DesktopLauncher"
 project.ext.assetsDir = new File("../core/assets");

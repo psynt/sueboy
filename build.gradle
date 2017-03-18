@@ -35,6 +35,8 @@ allprojects {
 
     dependencies {
         compile "com.badlogicgames.ashley:ashley:1.7.0"
+        // https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-all
+        compile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.4.9'
     }
 }
 
