@@ -4,7 +4,12 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.g2d.Sprite
+import com.badlogic.gdx.scenes.scene2d.EventListener
+import com.badlogic.gdx.scenes.scene2d.InputEvent
+import com.badlogic.gdx.scenes.scene2d.InputListener
 import com.badlogic.gdx.scenes.scene2d.Stage
+import com.badlogic.gdx.scenes.scene2d.Touchable
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener
 
 /**
  * Created by nichita on 18/03/17.
@@ -12,20 +17,32 @@ import com.badlogic.gdx.scenes.scene2d.Stage
 class Stuff extends Stage{
 
     def bt = getBatch()
+    def a = new Thing()
+
     def font = new BitmapFont()
     def text = "hello";
 
     Stuff() {
         super()
-        addActor(new Thing());
+        a.addListener(new InputListener(){
+            @Override
+            boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                ((Thing)event.getTarget()).setTouched(true);
+                text = "bye"
+                println "hit"
+                true
+            }
+
+        })
+
+        a.setTouchable(Touchable.enabled)
+        addActor(a);
+
     }
 
     void draw() {
-        // tell the camera to update its matrices.
         camera.update();
 
-        // tell the SpriteBatch to render in the
-        // coordinate system specified by the camera.
         bt.setProjectionMatrix(camera.combined);
 
         bt.begin();
@@ -36,11 +53,7 @@ class Stuff extends Stage{
             it.draw(bt,1);
         }
 
-//        playerShip.draw(bt, 1F);
-
         bt.end();
-
-        Gdx.input.setInputProcessor(this);
     }
 
 

@@ -2,6 +2,7 @@ package com.sueboy
 
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.Batch
+import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.g2d.Sprite
 import com.badlogic.gdx.scenes.scene2d.Actor
 import com.badlogic.gdx.scenes.scene2d.InputEvent
@@ -12,19 +13,22 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener
  */
 class Thing extends Actor{
 
+    def touched = 0
+    def actorX = 0, actorY = 0
+    def plane =new Texture("jet.png")
 
-    Thing() {
-        super()
-        addListener(new ClickListener(){
-            @Override
-            void clicked(InputEvent event, float x, float y) {
-                println "hit"
-            }
-        })
+    Thing(){
+        setBounds(actorX,actorY,plane.getWidth(),plane.getHeight());
+    }
+
+    @Override
+    void act(float delta) {
+        if (touched)
+            actorX+=5
     }
 
     @Override
     void draw(Batch batch, float parentAlpha) {
-        new Sprite(new Texture("jet.png")).draw(batch);
+        batch.draw(plane,actorX,actorY)
     }
 }
