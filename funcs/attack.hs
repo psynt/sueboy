@@ -13,6 +13,8 @@ type Move = (Int, Int, Int)
 
 type Guy = (HP, AP, Str, Guile, Anger, [Item], XP, String)
 
+apMax = 15
+
 hero :: Guy
 hero = (100, 50, 3, 2, 0, [], 0, "Sue")
 
@@ -92,3 +94,8 @@ useItem g i | snd i < 0 = do putStr (fst i ++ " hits for " ++ show (snd i) ++ " 
                              return g'
   where
     g' = ( (hp g) + (snd i),ap g,str g, guile g, anger g, items g, xp g, name g)
+
+-- type Guy = (HP, AP, Str, Guile, Anger, [Item], XP, String)
+
+skip :: Guy -> Guy
+skip g = (hp g, apMax, str g, guile g, anger g, items g, xp g, name g )
