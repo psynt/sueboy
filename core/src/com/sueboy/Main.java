@@ -18,6 +18,7 @@ public class Main extends ApplicationAdapter {
 
 	@Override
 	public void create () {
+		Font.init();
 		st= new Stuff();
         Gdx.input.setInputProcessor(st);
 
@@ -25,6 +26,7 @@ public class Main extends ApplicationAdapter {
 
 	@Override
 	public void dispose () {
+		st.dispose();
 	}
 
 	@Override

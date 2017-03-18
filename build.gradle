@@ -37,6 +37,7 @@ allprojects {
         compile "com.badlogicgames.ashley:ashley:1.7.0"
         // https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-all
         compile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.4.9'
+        compile "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
     }
 }
 
@@ -50,6 +51,7 @@ project(":desktop") {
         compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
         compile "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
+        compile "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
     }
 }
 

@@ -1,15 +1,12 @@
 package com.sueboy
 
 import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.BitmapFont
-import com.badlogic.gdx.graphics.g2d.Sprite
-import com.badlogic.gdx.scenes.scene2d.EventListener
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator
 import com.badlogic.gdx.scenes.scene2d.InputEvent
 import com.badlogic.gdx.scenes.scene2d.InputListener
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.scenes.scene2d.Touchable
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener
 
 /**
  * Created by nichita on 18/03/17.
@@ -19,11 +16,12 @@ class Stuff extends Stage{
     def bt = getBatch()
     def a = new Thing()
 
-    def font = new BitmapFont()
-    def text = "hello";
+    def font = Font.font
+    def text = "hello"*15;
 
     Stuff() {
         super()
+
         a.addListener(new InputListener(){
             @Override
             boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -47,7 +45,7 @@ class Stuff extends Stage{
 
         bt.begin();
 
-        font.draw(bt,text,300,300)
+        font.draw(bt,text,0,300)
 
         getActors().each {
             it.draw(bt,1);
@@ -56,5 +54,9 @@ class Stuff extends Stage{
         bt.end();
     }
 
-
+    @Override
+    void dispose() {
+        super.dispose()
+        font.dispose()
+    }
 }
