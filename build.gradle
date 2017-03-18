@@ -13,6 +13,8 @@ buildscript {
 allprojects {
     apply plugin: "eclipse"
     apply plugin: "idea"
+    apply plugin: "java"
+    apply plugin: "groovy"
 
     version = '1.0'
     ext {
@@ -30,10 +32,15 @@ allprojects {
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         maven { url "https://oss.sonatype.org/content/repositories/releases/" }
     }
+
+    dependencies {
+        compile "com.badlogicgames.ashley:ashley:1.7.0"
+    }
 }
 
 project(":desktop") {
     apply plugin: "java"
+    apply plugin: "groovy"
 
 
     dependencies {
@@ -61,6 +68,7 @@ project(":html") {
 
 project(":core") {
     apply plugin: "java"
+    apply plugin: "groovy"
 
 
     dependencies {
