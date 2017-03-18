@@ -25,6 +25,26 @@ Fight - Get into fight, Inc Anger
 
 ### Fight Actions
 Punch - Low Cost, Consistent Dmg
-Haymaker - More Cost, Variable Dmg
+Hay-maker - More Cost, Variable Dmg
 Low Blow - High Cost, High Dmg
-Item - One Shot 
+Item - One Shot uses (Empty Bottle for Dmg, Food for HP, Something else for AP boost?)
+Skip turn - replenish AP
+Run - Scarper, Leg it
+
+#### Fight Stats
+##### AP
+AP amount dependent on Anger level
+AP replenished a small amount between Fight Turns
+AP used to perform actions in Fights
+
+##### HP
+HP decreases when Dmg is taken
+HP increases upon rest and items
+
+##### Strength
+Strength stat influences damage multiplier
+Strength stat influences damage reduction
+
+##### Guile
+Guile stat influences accuracy of attacks
+Guile stat influences dodgeability of enemy attacks
