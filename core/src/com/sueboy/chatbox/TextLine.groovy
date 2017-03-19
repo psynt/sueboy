@@ -12,19 +12,18 @@ class TextLine extends Actor{
     def text
     def offx,offy
 
-    TextLine(String text,float y=0,float x=10){
+    TextLine(String text,float y=0,float x=0){
         this.text = text
-        offx=x
-        offy=(float)((y)*Font.hi)
-        setBounds(offx,offy,(float)(offx+Font.wid*text.length()),(float)(offy+Font.hi))
+        setBounds(x,y,(float)(Font.wid*text.length()),Font.hi)
     }
 
-    def sety(float y){
-        offy = (float)((y)*Font.hi)
+
+    def len(){
+        Font.wid*text.length()
     }
 
     @Override
     void draw(Batch bt, float parentAlpha) {
-        Font.draw(bt,text,offx,offy)
+        Font.draw(bt,text,getX(),(float)(getY()+Font.hi))
     }
 }

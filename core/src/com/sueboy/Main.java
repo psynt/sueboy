@@ -14,12 +14,13 @@ import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 public class Main extends ApplicationAdapter {
-	private Stage st;
+	private Stage st,st2;
 
 	@Override
 	public void create () {
 		Font.init();
 		st= new Stuff();
+//		st2= new Stuff();
         Gdx.input.setInputProcessor(st);
 
 	}
@@ -39,6 +40,8 @@ public class Main extends ApplicationAdapter {
 		st.act(Gdx.graphics.getDeltaTime());
 		st.draw();
 
+//		st2.act(Gdx.graphics.getDeltaTime());
+//		st2.draw();
 
 
 	}

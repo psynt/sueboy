@@ -51,9 +51,14 @@ class Stuff extends Stage{
 
         def tl = [new TextLine("yellow!"),new TextLine("Bye")]
 
+//        def tl = new ArrayList<TextLine>()
+//        tl.add(new TextLine("yellow!"))
+//        tl.add(new TextLine("Bye"))
+
+
         def ta = new TextArea(tl)
 
-        def tb = new TextBox(ta, Color.BLUE)
+        def tb = new TextBox(ta, Color.BLUE,100)
 
         addActor(tb)
 
@@ -63,7 +68,7 @@ class Stuff extends Stage{
 //        Font.draw(bt,"Bye!",0,Font.hi)
 
         getActors().each {
-            it.draw(bt,0.5f);
+            it.draw(bt,1);
         }
 
         bt.end();

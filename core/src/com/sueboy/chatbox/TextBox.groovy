@@ -14,22 +14,24 @@ import com.sueboy.Font
 class TextBox extends Group{
     def t
 
-    TextBox(TextArea ta, Color color, int width=1024,int height=((ta.textfields.size())*Font.hi)+5,int x=0, int y=0){
+    TextBox(TextArea ta, Color color, int width=1024,int height=((ta.textfields.size()+1)*Font.hi),int x=0, int y=0){
 
-        def pixmap = new Pixmap(width, height+5, Pixmap.Format.RGBA8888)
+        def pixmap = new Pixmap(width, height, Pixmap.Format.RGBA8888)
         pixmap.setColor(color)
-        pixmap.fillRectangle(x, y, width, height+5)
+        pixmap.fillRectangle(x-width, (int)(y-(height)), width*2, height*2)
 
         t = new Texture(pixmap)
 
         addActor(new Actor(){
             @Override
             void draw(Batch batch, float parentAlpha) {
-                batch.draw(t,x,y)
+                batch.draw(t,x,(int)(y))
             }
         })
 
         pixmap.dispose()
+
+        ta.setBounds(x,y,width,height)
 
         addActor(ta)
 

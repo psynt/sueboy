@@ -11,7 +11,7 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator
 class Font {
 
     static font;
-    static wid;
+    static wid = 4;
     static hi = 16
 
     static init(){
@@ -21,8 +21,6 @@ class Font {
         par.size = hi
         font = gen.generateFont(par)
         gen.dispose()
-
-        wid = 3.8
 
     }
 
