@@ -15,12 +15,15 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 public class Main extends ApplicationAdapter {
 	private Stage st,st2;
+	private Bar b;
+	private SpriteBatch sb;
 
 	@Override
 	public void create () {
 		Font.init();
+		sb = new SpriteBatch();
 		st= new Stuff();
-//		st2= new Stuff();
+		b = new Bar();
         Gdx.input.setInputProcessor(st);
 
 	}
@@ -37,11 +40,14 @@ public class Main extends ApplicationAdapter {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 
+		sb.begin();
+		b.forEach(e -> e.draw(sb));
+		sb.end();
+
+
+
 		st.act(Gdx.graphics.getDeltaTime());
 		st.draw();
-
-//		st2.act(Gdx.graphics.getDeltaTime());
-//		st2.draw();
 
 
 	}
