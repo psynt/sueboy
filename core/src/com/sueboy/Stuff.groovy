@@ -1,12 +1,16 @@
 package com.sueboy
 
 import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator
 import com.badlogic.gdx.scenes.scene2d.InputEvent
 import com.badlogic.gdx.scenes.scene2d.InputListener
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.scenes.scene2d.Touchable
+import com.sueboy.chatbox.TextArea
+import com.sueboy.chatbox.TextBox
+import com.sueboy.chatbox.TextLine
 
 /**
  * Created by nichita on 18/03/17.
@@ -16,7 +20,7 @@ class Stuff extends Stage{
     def bt = getBatch()
     def a = new Thing()
 
-    def font = Font.font
+    def font = new BitmapFont()
     def text = "hello"*15;
 
     Stuff() {
@@ -34,7 +38,7 @@ class Stuff extends Stage{
         })
 
         a.setTouchable(Touchable.enabled)
-        addActor(a);
+//        addActor(a);
 
     }
 
@@ -45,10 +49,21 @@ class Stuff extends Stage{
 
         bt.begin();
 
-        font.draw(bt,text,0,300)
+        def tl = [new TextLine("yellow!"),new TextLine("Bye")]
+
+        def ta = new TextArea(tl)
+
+        def tb = new TextBox(ta, Color.BLUE)
+
+        addActor(tb)
+
+//        addActor(new TextLine("yellow!"));
+//        addActor(new TextLine("Bye",1));
+//        Font.draw(bt,"yellow",0,0)
+//        Font.draw(bt,"Bye!",0,Font.hi)
 
         getActors().each {
-            it.draw(bt,1);
+            it.draw(bt,0.5f);
         }
 
         bt.end();
@@ -57,6 +72,6 @@ class Stuff extends Stage{
     @Override
     void dispose() {
         super.dispose()
-        font.dispose()
+//        font.dispose()
     }
 }

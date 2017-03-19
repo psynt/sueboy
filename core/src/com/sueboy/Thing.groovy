@@ -2,11 +2,7 @@ package com.sueboy
 
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.Batch
-import com.badlogic.gdx.graphics.g2d.BitmapFont
-import com.badlogic.gdx.graphics.g2d.Sprite
 import com.badlogic.gdx.scenes.scene2d.Actor
-import com.badlogic.gdx.scenes.scene2d.InputEvent
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener
 
 /**
  * Created by nichita on 18/03/17.
@@ -18,7 +14,7 @@ class Thing extends Actor{
     def plane =new Texture("jet.png")
 
     Thing(){
-        setBounds(actorX,actorY,plane.getWidth(),plane.getHeight());
+        setBounds(actorX,actorY,plane.getWidth(),plane.getHeight())
     }
 
     @Override
