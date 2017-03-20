@@ -13,10 +13,14 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
+import java.util.Random;
+
 public class Main extends ApplicationAdapter {
 	private Stage st,st2;
 	private Bar b;
+	private Guy g;
 	private SpriteBatch sb;
+	public static Random rand = new Random();
 
 	@Override
 	public void create () {
@@ -24,6 +28,7 @@ public class Main extends ApplicationAdapter {
 		sb = new SpriteBatch();
 		st= new Stuff();
 		b = new Bar();
+		g=new Guy(new GuyGen());
         Gdx.input.setInputProcessor(st);
 
 	}
@@ -42,6 +47,7 @@ public class Main extends ApplicationAdapter {
 
 		sb.begin();
 		b.forEach(e -> e.draw(sb));
+//		g.draw(sb,1);
 		sb.end();
 
 

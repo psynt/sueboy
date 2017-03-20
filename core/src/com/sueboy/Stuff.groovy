@@ -20,8 +20,8 @@ class Stuff extends Stage{
     def bt = getBatch()
     def a = new Thing()
 
-    def font = new BitmapFont()
     def text = "hello"*15;
+    def gee = new Guy(new GuyGen(),100,100)
 
     Stuff() {
         super()
@@ -51,21 +51,15 @@ class Stuff extends Stage{
 
         def tl = [new TextLine("yellow!"),new TextLine("Bye")]
 
-//        def tl = new ArrayList<TextLine>()
-//        tl.add(new TextLine("yellow!"))
-//        tl.add(new TextLine("Bye"))
 
 
         def ta = new TextArea(tl)
 
         def tb = new TextBox(ta, Color.BLUE,100)
 
-        addActor(tb)
+//        addActor(tb)
+        addActor(gee)
 
-//        addActor(new TextLine("yellow!"));
-//        addActor(new TextLine("Bye",1));
-//        Font.draw(bt,"yellow",0,0)
-//        Font.draw(bt,"Bye!",0,Font.hi)
 
         getActors().each {
             it.draw(bt,1);
@@ -77,6 +71,5 @@ class Stuff extends Stage{
     @Override
     void dispose() {
         super.dispose()
-//        font.dispose()
     }
 }
